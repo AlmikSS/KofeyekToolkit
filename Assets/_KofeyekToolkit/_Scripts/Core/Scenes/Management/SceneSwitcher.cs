@@ -47,6 +47,7 @@ namespace KofeyekToolkit.Core.Scenes.Management
 
         private IEnumerator LoadSceneRoutine(string sceneName, ISceneArgs sceneArgs)
         {
+            _spawnService.DespawnInSceneObjects();
             _loadScreen.Show();
             var waitOperation = SceneManager.LoadSceneAsync(sceneName);
             

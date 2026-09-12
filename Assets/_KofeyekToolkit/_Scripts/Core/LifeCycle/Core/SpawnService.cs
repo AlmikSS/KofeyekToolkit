@@ -54,6 +54,22 @@ namespace KofeyekToolkit.Core.LifeCycle.Core
             IsLoggingEnabled = enable;
         }
 
+        internal void DespawnInSceneObjects()
+        {
+            var allObjects = Object.FindObjectsByType<SceneObject>();
+
+            Message($"Despawning {allObjects.Length} scene objects.");
+
+            foreach (var obj in allObjects)
+            {
+                var instance = obj.gameObject;
+                
+                NotifyComponents<IDespawnable>(instance, component => component.OnDespawn());
+                NotifyComponents<IDestroyable>(instance, component => component.OnDestroyed());
+                UnregisterAllTickables(instance);
+            }
+        }
+        
         internal void SpawnInSceneObjects()
         {
             var allObjects = Object.FindObjectsByType<SceneObject>();

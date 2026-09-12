@@ -19,6 +19,7 @@ namespace KofeyekToolkit.Core
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Initialize()
         {
+            Log.EnableFileLogging(true);
             Log.Initialize();
             var diContainer = new DIContainer();
             diContainer.RegisterServicesFromAssemblies(typeof(AppBootstrap).Assembly);
