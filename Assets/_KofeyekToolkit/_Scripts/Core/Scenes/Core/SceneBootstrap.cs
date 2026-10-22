@@ -7,6 +7,11 @@ namespace KofeyekToolkit.Core.Scenes.Core
     /// </summary>
     public abstract class SceneBootstrap : MonoBehaviour
     {
-        internal abstract void Initialize(ISceneArgs sceneArgs);
+        internal void Initialize(ISceneArgs sceneArgs)
+        {
+            OnInitialize(sceneArgs);
+        }
+        
+        protected abstract void OnInitialize(ISceneArgs sceneArgs);
     }
 }
