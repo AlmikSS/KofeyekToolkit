@@ -83,6 +83,5 @@ namespace KofeyekToolkit.Core.Scenes.Management
             if (_isLoggingEnabled)
                 Log.Error(message);
         }
-
     }
 }
